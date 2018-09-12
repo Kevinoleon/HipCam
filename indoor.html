@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hipcam</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" type="image/png" href="images/faviHipcam.png" sizes="64x64" />
+
+  
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+   <link rel="stylesheet" href="css/custom.css">
+
+   <style type="text/css">
+      #botContacto {
+  background-color:#687e95;
+  color:white;
+  border-radius:25px;
+  padding-left:35px;
+  padding-right:35px;
+}
+
+.navbar-nav a {
+  font-size:18px;
+}
+
+.fa {
+  font-size: 25px;
+  text-align: center;
+  text-decoration: none;
+  /*  */
+  color:#687e95;
+  margin-left:15px;
+  margin-top:12px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+    text-decoration: none;
+    color:#5e5e5e;
+}
+
+
+.container1 {
+  position: relative;
+  /* width: 100%; */
+  cursor:pointer;
+  text-align: center;
+}
+
+.container1 .image {
+  display: block;
+  /* width: 100%; */
+  height: auto;
+  text-align: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  /* background-color: #008CBA; */
+  text-align: center;
+}
+
+.overlay .image {
+  width:100%;
+  height:auto;
+  text-align: center;
+
+}
+
+.container1:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+
+.colorPrincipal {
+  color: #687e95;
+}
+
+.contenedorContacto {
+  width:1195px;
+  height:auto;
+}
+
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border:0px;
+}
+
+  /* Estilos David*/
+
+.imgFondoAppCam {
+    background-image: url("images/fondoModule04.png");
+    background-color: #cccccc;
+    background-position: center center;
+    background-repeat:  no-repeat;
+    background-attachment: fixed;
+    background-size:  cover;
+}
+
+.imgFondoHipCam {
+    background-image: url("images/fondoFotoCeleste.png");
+    background-position: center center;
+    background-repeat:  no-repeat;
+    background-size:  cover;
+}
+
+.marMod2 {
+    padding: 80px 0;
+}
+
+.marTitle {
+    padding: 40px 0;
+}
+
+/* No Gutters */
+.row.no-gutters {
+   margin-right: 0;
+   margin-left: 0;
+}
+
+.row.no-gutters > [class^="col-"],
+.row.no-gutters > [class*=" col-"] {
+   padding-right: 0;
+   padding-left: 0;
+}
+
+/* Underline From Left */
+.imgCamPro img{ 
+  border-bottom: 5px solid #ffffff;
+} 
+
+.imgCamPro img:hover { 
+  border-bottom: 5px solid #687e95;
+  background-color:#fbfcfe;
+    -webkit-transition: border-bottom 0.5s; /* For Safari 3.1 to 6.0 */
+    transition: border-bottom 0.5s;
+} 
+
+/* agregado */
+
+#toTop{
+  position: fixed;
+  bottom: 30px;
+  right: 90px;
+  cursor: pointer;
+  display: none;
+  background-color:#687e95;
+  border:1px solid #687e95;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 5%;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0,0,0,.6);
+    background-color: rgba(0,0,0,0);
+    filter: alpha(opacity=50);
+    opacity: .5;
+}
+
+/* agregado Indoor */
+
+
+.boton {   
+    background-color: #ffffff; /* Green */
+    border: 1px solid #000000;
+    border-radius: 10px;
+    color: #000000;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.table-condensed>thead>tr>th, 
+.table-condensed>tbody>tr>th, 
+.table-condensed>tfoot>tr>th, 
+.table-condensed>thead>tr>td, 
+.table-condensed>tbody>tr>td, 
+.table-condensed>tfoot>tr>td{
+   padding: 20px;
+   width: 50%;
+   font-size: 16px;
+   text-align: left;
+}
+
+ </style>
+
+
+	
+</head>
+<body>
+
+  <nav class="navbar navbar-default">
+
+  <div id="contenedorInterno">
+
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="index.php">
+    <img src="images/logo_hipcam_true.png" alt="">
+  </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+          <li><a href="indoor.html">Indoor</a></li>
+          <li><a href="outdoor.html">Outdoor</a></li>
+          <li><a href="doorbell.html">Doorbell</a></li>
+          <li><a href="hipcamprotect.html">Hipcam protect</a></li>
+          <li><a href="videos.php">Videos</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+  <!--   <li><a href="b2bpaltform.html">B2B Paltform</a></li> -->
+      <li><a href="contact.php?id=8" id="botContacto">Contact us</a></li>
+    </ul>
+
+    </div>
+
+  </div>
+
+  </div>
+</nav>
+
+
+<!-- Header -->
+<img src="images/HEADER-INDOOR.png" class="img-responsive">
+<!-- Fin - Header -->
+
+
+
+<div id="contenedorInterno">
+<!-- <div style="width:1590px; margin:0 auto;"> -->
+  <div class="container-fluid" style="padding: 70px 50px;">
+    <div class="row text-center">
+        <h2 style="color: #687e95">Hipcam is much more than a camera. It  is a smart home security ecosystem.</h2>
+    </div>
+ </div>
+ </div>
+  <!-- módulo de 2 bloques -->
+<div style="background-color: #f2f2f2">
+
+<div id="contenedorInterno">
+  <div class="container-fluid">
+  <div class="marMod2" >
+    <div class="row">
+      <div class="col-md-6" style="margin-top:30px;">
+        <img src="images/indoorCuadro1.png" class="img-responsive center-block">
+      </div>
+      <div class="col-md-6" style="margin-top:30px;">
+        <img src="images/indoorCuadro2.png" class="img-responsive center-block">
+      </div>
+    </div>
+
+    <div class="row" style="">
+      <div class="col-md-6" style="margin-top:30px;">
+        <img src="images/indoorCuadro3.png" class="img-responsive center-block">
+      </div>
+      <div class="col-md-6" style="margin-top:30px;">
+        <img src="images/indoorCuadro4.png" class="img-responsive center-block">
+      </div>
+    </div>
+
+    <div class="row" style="">
+      <div class="col-md-6" style="margin-top:30px;">
+        <img src="images/indoorCuadro5.png" class="img-responsive center-block">
+      </div>
+      <div class="col-md-6" style="margin-top:30px;">
+        <img src="images/indoorCuadro6.png" class="img-responsive center-block">
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+  <!-- fín de módulo de 2 bloques -->
+
+    <!-- módulo de 2 bloques -->
+
+    <div id="contenedorInterno">
+    <div class="container-fluid">  
+    <div class="row" style="padding-top: 80px;">
+      <div id="contenedorInterno">
+              <div class="col-xs-12 col-md-1">
+              </div>
+
+              <div class="col-xs-12 col-md-5">
+                  <img src="images/indoorCam1.png" class="img-responsive center-block">
+              </div>
+
+              <div class="col-xs-12 col-md-5" style=" ">    
+                  <img src="images/indoorCam2.png" class="img-responsive center-block">
+              </div>
+               <div class="col-xs-12 col-md-1">
+              </div>
+        </div>
+    </div>
+</div>
+    <div class="container-fluid">  
+    <div class="row" style="padding-top: 10px;">
+      <div id="contenedorInterno">
+              <div class="col-xs-12 col-md-1">
+              </div>
+
+              <div class="col-xs-12 col-md-10">
+                  <img src="images/camIcons01.png" class="img-responsive center-block">
+              </div>
+
+               <div class="col-xs-12 col-md-1">
+              </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+
+  <div class="row" style="padding-top: 10px; padding-bottom: 80px">
+
+    <div id="contenedorInterno">
+
+      <div class="col-xs-12 col-md-2">
+      </div>
+
+      <div class="col-xs-12 col-md-8  text-center">
+
+        <button class="boton" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            VIEW FULL SPECS
+        </button>
+
+        <div class="collapse" id="collapseExample" style="margin-top:30px;">
+          <div class="card card-body">
+            <table class="table table-condensed">
+<tbody>
+                <tr>
+                  <th scope="row">Camera</th>
+                  <td>1080p Full HD Camera</td>
+                </tr>
+                <tr>
+                  <th scope="row" >Field of view</th>
+                  <td>136° wide angle lens</td>
+                </tr>
+                <tr>
+                  <th scope="row">Night Vision</th>
+                  <td>Full Night Vision 6 IR LEDs</td>
+                </tr>
+                  <tr>
+                  <th scope="row">Audio</th>
+                  <td>High-quality microphone<br>Bult-in speaker<br>Two-way conversation (included with Membership)</td>
+                </tr>
+                </tr>
+                  <tr>
+                  <th scope="row">Power</th>
+                  <td>Can be used plugged-in or with built-in<br>2500 mAh rechargeable lithium ion battery<br>100-240V AC power supply<br>8ft (2.4m) length outdoor power cable</td>
+                </tr>
+                  <tr>
+                  <th scope="row">Connectity</th>
+                  <td>Dual-band WiFi (801.11 b/g/n)</td>
+                </tr>
+                  <tr>
+                  <th scope="row">Operating Temperatures</th>
+                  <td>-4° to 113° F (deviations permitted to 122° F)<br>-20° to 45° C (deviations permitted to 50° C)</td>
+                </tr>
+                <tr>
+                  <th scope="row">Sensors</th>
+                  <td>Temperature<br>Humidity<br>Light</td>
+                </tr>
+                <tr>
+                  <th scope="row">Size & Weight</th>
+                  <td>Height: 4.35 in (110.5 mm)<br>Diameter: 1.9 in (48.3 mm)<br>Weight: 0.53 lbs (240 g)</td>
+                </tr>
+                <tr>
+                  <th scope="row">Security & Data Protection</th>
+                  <td>128-bit AES with TLS/SSL encryption<br>For streaming & data</td>
+                </tr>
+                <tr>
+                  <th scope="row">Warranty</th>
+                  <td>Comes with a 1-year limited warranty (Valid only for Hipcam products purchaded by end user from Hipcam and its authoriezed reseller)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-2">
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+
+  <!-- fín de módulo de 2 bloques -->
+
+  </div>
+</div>
+
+
+<!-- Module Hipcam Protect -->
+<div class="container-fluid">  
+    <div class="row imgFondoHipCam" style="background-color: #687e95">
+      <div id="contenedorInterno">
+              <div class="col-xs-12 col-md-2">
+              </div>
+
+              <div class="col-xs-12 col-md-3">
+                  <img src="images/camara.png" class="img-responsive center-block" style="padding-top: 30px">
+              </div>
+
+              <div class="col-xs-12 col-md-1">
+              </div>
+ 
+              <div class="col-xs-12 col-md-3" style="margin-top: 3%">    
+                  <img src="images/HipcamProtect.png" class="img-responsive center-block" style="padding: 20px 20px 20px 20px">
+                   <a href="hipcamprotect.html"><img src="images/botonSeeMore.png" class="img-responsive center-block" style="padding: 0px 20px 20px 30px"></a>
+              </div>
+               <div class="col-xs-12 col-md-3">
+              </div>
+        </div>
+    </div>
+</div>
+
+
+  </div>
+</div>
+<!-- fin map contact -->
+
+
+<div style="width:100%; height:185px; clear:both;"></div>
+
+<!-- Footer -->
+<div id="contenedorInterno">
+  
+   <script>(function(v,p){
+var s=document.createElement('script');
+s.src='https://app.toky.co/resources/widgets/toky-widget.min.js?v='+v;
+s.onload=function(){Toky.load(p);};
+document.head.appendChild(s);
+})('04416eff', {"$show_option":true,"$username":"Hipcam","$bubble":false,"$position":"left","$text":"Call us for free!"})
+</script>
+  
+    <div class="col-md-6 col-xs-6" style="">
+      <img src="images/logo_hipcam_true.png" alt="">
+    </div>
+
+    <div class="col-md-6 col-xs-6 text-right">
+
+      <a href="https://twitter.com/HipCamSmartHome" target="_blank" class="fa fa-twitter"></a>
+      <a href="https://www.facebook.com/HipcamSmartHome/" target="_blank" class="fa fa-facebook"></a>
+      <a href="https://www.linkedin.com/company/hipcam/" target="_blank" class="fa fa-linkedin"></a>
+      <a href="https://www.instagram.com/" target="_blank" class="fa fa-instagram"></a>
+      
+    </div>
+
+ </div>
+
+ <!-- fin footer -->
+
+ <div style="width:100%; height:140px; clear:both;"></div>
+
+ 
+
+<!-- agregado -->
+
+<script>
+ $(document).ready(function(){
+      $('body').append('<div id="toTop" class="btn btn-info"><span class="glyphicon glyphicon-chevron-up"></span> Back to Top</div>');
+      $(window).scroll(function () {
+      if ($(this).scrollTop() != 0) {
+        $('#toTop').fadeIn();
+      } else {
+        $('#toTop').fadeOut();
+      }
+    }); 
+    $('#toTop').click(function(){
+        $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+    });
+});
+
+</script>
+
+
+<script>
+  window.intercomSettings = {
+    app_id: "gg13kwwy"
+  };
+</script>
+<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/gg13kwwy';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+
+
+	
+</body>
+</html>
