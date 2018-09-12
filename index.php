@@ -71,7 +71,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100%;
+  height: 99%;
   width: 100%;
   opacity: 0;
   transition: .5s ease;
