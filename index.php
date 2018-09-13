@@ -71,7 +71,11 @@
   bottom: 0;
   left: 0;
   right: 0;
+<<<<<<< HEAD
   height: 100%;
+=======
+  height: 99%;
+>>>>>>> 18f91e536a3c813761bdc0569565c1794ddba0bd
   width: 100%;
   opacity: 0;
   transition: .5s ease;
@@ -646,4 +650,8 @@ document.head.appendChild(s);
 
 	
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 18f91e536a3c813761bdc0569565c1794ddba0bd
